@@ -13,11 +13,19 @@ code {
 }
 
 img{
-  width: 50%;
+  width: 48%;
+  height: 40vh;
+  border-radius: 5px;
+  margin: 0.8rem;
 }
 article:nth-of-type(2n-1){
   background-color: rgb(177, 227, 177);
 }
 article:nth-of-type(2n){
   background-color: rgb(170, 170, 241);
+}
+
+article, section {
+  width: 90%;
+  margin: 0 auto;
 }

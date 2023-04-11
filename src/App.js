@@ -28,20 +28,27 @@ function App() {
           <h1>{eventData.name}</h1>
           <img src={eventData.logo_url}/>
           <img src={eventData.gallery_url}/>
-          <h1> Start :{eventData.starts_at}</h1>
-          <h1> End : {eventData.ends_at}</h1>
-          <h1>Event Details</h1>
+          <ul>
+            <li>Start :{eventData.starts_at}</li>
+            <li>End : {eventData.ends_at}</li>
+          </ul>
+          <h3>Event Details</h3>
           <p>{eventData.summary}</p>
           <a href={eventData.webpage_url}> Event Web Page</a>
-          <h1>{eventData.location}</h1>
+          <address>Location: {eventData.location}</address>
         </section>
       )}
 
       {projectsData && projectsData.map((projectsData) => (
         <article key={projectsData.id}>
           <h1>{projectsData.name}</h1>
-          <a href={projectsData.autotext_url}>Project details</a>
-          <a href={projectsData.contact_url}>contact mail</a>
+          <ul>
+            <li><a href={projectsData.autotext_url}>Project details</a></li>
+            <li>contact mail: {projectsData.contact_url}</li>
+            <li><a href={projectsData.event_url}>Event Url</a></li>
+          </ul>
+          
+          
           <a href={projectsData.event_url}>Event Url</a>
           <h3>excerpt</h3>
           <p>{projectsData.excerpt}</p>
