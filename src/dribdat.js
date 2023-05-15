@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 
 export const fetchData = async (user_provided_url) => {
     if (typeof user_provided_url == 'undefined' || !user_provided_url) {
-        Promise.reject(new Error("URL is required"))
+        return Promise.reject("URL is required")
     }
 
     // Parse the project URL and turn into an API reference
@@ -10,7 +10,7 @@ export const fetchData = async (user_provided_url) => {
 
     // Verify the url
     if (url_parts.length !== 2) {
-        throw "Invalid format"
+        return Promise.reject("Invalid format")
     }
 
     // Take the fist part as URL
@@ -21,6 +21,7 @@ export const fetchData = async (user_provided_url) => {
 
     // Compose the API call
     const project_api = `${base_url}/api/project/${project_id}/info.json`
+    console.log("Fetching", project_api)
 
     // Collect and respond the data
     const response = await fetch(project_api)
@@ -28,5 +29,5 @@ export const fetchData = async (user_provided_url) => {
     if (resData && resData != null) {
         return resData;
     }
-    throw "Could not load remote data"
+    return Promise.reject("Could not load remote data")
 }
