@@ -1,23 +1,20 @@
 import { useState, useEffect } from "react";
 
+import { fetchData } from "./Remote";
+
 function App() {
 
   const [data, setData] = useState()
   const [eventData, setEventData] = useState()
   const [projectsData, setProjectsData] = useState()
 
-  async function fetchData () {
-    const response = await fetch('https://hack.opendata.ch/api/event/current/projects.json')
-    const resData = await response.json()
-    if (resData && resData != null) {
+  useEffect(() => {
+    const user_provided_url = 'https://bd.hack4socialgood.ch/project/75';
+    fetchData(user_provided_url).then((resData) => {
       setData(resData)
       setEventData(resData.event)
-      setProjectsData(resData.projects)
-    }
-  }
-
-  useEffect(()=>{
-    fetchData();
+      setProjectsData([resData.project])
+    })
   }, [])
 
   return (

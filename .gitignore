@@ -2,6 +2,7 @@
 node_modules/
 jspm_packages/
 */package-lock.json
+yarn.lock
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
