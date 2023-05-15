@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { fetchData } from "./Remote";
+import { fetchData } from "../dribdat";
 
 function App() {
 
