@@ -14,11 +14,21 @@ const PORT = process.env.PORT || 8081;
 const router = express.Router();
 
 // Get basic dribdat info
-router.get('/project/:url', async (req, res) => {
+router.get('/project', async (req, res) => {
     try {
-      const user_provided_url = req.params.url
+      const user_provided_url = req.query.url;
+      const use_simple_format = req.query.simple == '1';
+      console.log(req.query)
       fetchData(user_provided_url).then((results) => {
+        if (use_simple_format) {
+            results = {
+                'location': results.event.location,
+                'teamname': results.project.name
+            }
+        }
         res.status(200).send(results)
+    }).catch((reason) => {
+        res.status(500).send(reason)
       })
     } catch (err) {
       console.error(err)
